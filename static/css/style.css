@@ -1,22 +1,54 @@
-
-
 body {
-    font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', sans-serif;
 }
 
 .text-shadow {
-    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
 }
 
 
 /* navbar*/
 .nav-wrapper {
-    background-color: #2b333b;
-    border-bottom: #c20404 4px solid;
-  }
-  
-  .sidenav,
-  .sidenav li > a {
-    background-color: #131b23;
-    color: #fff;
-  }
+  background-color: #263238;
+  border-bottom: #c20404 4px solid;
+}
+
+.sidenav,
+.sidenav li>a {
+  background-color: #263238;
+  color: #fff;
+}
+
+/* register.html */
+
+.background-register {
+  border-bottom: #c20404 4px solid;
+  background-color: #263238;
+  background: url("../images/table_with_food_top_view_900x700.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 81vh;
+}
+
+.icon-color {
+  color: #263238
+}
+
+.icon-color:hover {
+  color: red
+}
+
+.input-hover:hover {
+  color: red
+}
+
+/* footer  */
+
+.footer-bg {
+  background-color: #263238;
+  border-bottom: #c20404 4px solid;
+  border-top: #c20404 4px solid;
+}
+
