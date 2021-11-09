@@ -1,0 +1,22 @@
+
+
+body {
+    font-family: 'Raleway', sans-serif;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
+}
+
+
+/* navbar*/
+.nav-wrapper {
+    background-color: #2b333b;
+    border-bottom: #c20404 4px solid;
+  }
+  
+  .sidenav,
+  .sidenav li > a {
+    background-color: #131b23;
+    color: #fff;
+  }
