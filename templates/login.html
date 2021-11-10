@@ -2,8 +2,9 @@
 {% block content %}
 
 
+
 <div class="row background-register-login">
-    <form class="col s12 m8 offset-m2 form-position" method="POST" action="{{ url_for('register') }}">
+    <form class="col s12 m8 offset-m2 form-position" method="POST" action="{{ url_for('login') }}">
         <div class="card-panel">
             <!-- username -->
             <div class="row">
@@ -23,21 +24,22 @@
                     <label for="password">Password</label>
                 </div>
             </div>
-
-            <!-- register -->
-            <div class="row ">
-                <button type="submit" class="col s12 btn-large deep-orange darken-4">
-                    Register <i class="fas fa-sign-in-alt"></i>
+            <!-- login -->
+            <div class="row">
+                <button type="submit" class="col s12 btn-large btn-large deep-orange darken-4">
+                    Log In <i class="fas fa-sign-in-alt"></i>
                 </button>
             </div>
             <div class="row">
                 <div class="col s12">
                     <p class="center-align">
-                        Already Registered?  <a href="{{url_for('login')}}" class="light-blue-text text-darken-4">Log In</a>
+                        New Here?
+                        <a href="{{ url_for('register') }}" class="light-blue-text text-darken-4">Register Account</a>
                     </p>
                 </div>
             </div>
         </div>
+
     </form>
 </div>
 

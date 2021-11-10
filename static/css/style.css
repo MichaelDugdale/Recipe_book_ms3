@@ -19,9 +19,9 @@ body {
   color: #fff;
 }
 
-/* register.html */
+/* register.html/login.html */
 
-.background-register {
+.background-register-login {
   border-bottom: #c20404 4px solid;
   background-color: #263238;
   background: url("../images/table_with_food_top_view_900x700.jpg") no-repeat center center;
@@ -36,13 +36,10 @@ body {
   color: #263238
 }
 
-.icon-color:hover {
-  color: red
+.form-position {
+  margin-top: 2.75rem;
 }
 
-.input-hover:hover {
-  color: red
-}
 
 /* footer  */
 
@@ -51,4 +48,11 @@ body {
   border-bottom: #c20404 4px solid;
   border-top: #c20404 4px solid;
 }
+
+
+/* flashes */
+
+
+
+
 
