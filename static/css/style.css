@@ -37,7 +37,7 @@ body {
 }
 
 .form-position {
-  margin-top: 2.75rem;
+  margin-top: 4.75rem;
 }
 
 
@@ -52,7 +52,20 @@ body {
 
 /* flashes */
 
-
+.flashes {
+  z-index: 2;
+  position: fixed;
+  background-color: #263238;
+  border-radius: 10px;
+  border: #c20404 2px solid;
+  color: white;
+  text-align: center;
+  height: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1px 17.5px;
+  margin-top: 17.5px;
+}
 
 
 
