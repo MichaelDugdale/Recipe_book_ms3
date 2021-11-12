@@ -1,3 +1,5 @@
+[Here is a link project](https://recipe-book-msp3.herokuapp.com/)
+
 ## USER EXPERIENCE
 
 The structure of the site was designed to be simple and easy to use. It has a good balance of images and content, so it does not overload the user,
@@ -42,3 +44,15 @@ the user needing more knowledge.
 * To be able to Create, Read, Update and Delete recipes.
 * To save recipes to favourites section.
 * To delete recipes to favourites section.
+
+## WIREFRAMES
+
+The wireframes were designed using [Balsamiq](https://balsamiq.com/). They're accessible in the following links:
+
+1. (readme-files/Wireframe 1 home_page.png)
+2. (readme-files/wireframe 2 recipe_page.png)
+3. (readme-files/New Wireframe 3 register_login_Pages.png)
+4. (readme-files/New Wireframe 4 add_recipe.png)
+
+
+
