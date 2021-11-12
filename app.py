@@ -34,7 +34,6 @@ def get_recipes():
     return render_template("recipes.html", recipes=recipes)
 
 
-
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -107,6 +106,26 @@ def logout():
     flash("You have been logged out")
     session.pop("user")
     return redirect(url_for("login"))
+
+
+@app.route("/add_recipe", methods=["GET", "POST"])
+def add_recipe():
+    # adds users recipe to DB
+    if "user" in session:
+        if request.method == "POST":
+            add_recipes = {
+                "name": request.form.get("recipe_name"),
+                "ingredients": request.form.get("recipe_ingredients").splitlines(),
+                "method": request.form.get("recipe_method").splitlines(),
+                "image": request.form.get("recipe_image"),
+                "created_by": session["user"]
+            }
+            mongo.db.recipes.insert_one(add_recipe)
+            flash("Your Recipe Has Been Successfully Added!!")
+    else:
+        flash("Sorry, you are unable to do this, please log in")
+        return redirect(url_for("login"))
+    return render_template("add_recipe.html")
 
 
 if __name__ == "__main__":
