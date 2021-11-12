@@ -114,13 +114,13 @@ def add_recipe():
     if "user" in session:
         if request.method == "POST":
             add_recipes = {
-                "name": request.form.get("recipe_name"),
-                "ingredients": request.form.get("recipe_ingredients").splitlines(),
-                "method": request.form.get("recipe_method").splitlines(),
-                "image": request.form.get("recipe_image"),
+                "recipe_name": request.form.get("recipe_name"),
+                "recipe_ingredients": request.form.get("recipe_ingredients").splitlines(),
+                "recipe_method": request.form.get("recipe_method").splitlines(),
+                "recipe_image": request.form.get("recipe_image"),
                 "created_by": session["user"]
             }
-            mongo.db.recipes.insert_one(add_recipe)
+            mongo.db.recipes.insert_one(add_recipes)
             flash("Your Recipe Has Been Successfully Added!!")
     else:
         flash("Sorry, you are unable to do this, please log in")

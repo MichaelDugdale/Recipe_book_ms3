@@ -1,23 +1,68 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="background-add-recipe">
-<ul class="collapsible">
-    <li>
-      <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-pencil-alt"></i>Recipe Name</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-utensils"></i>Ingredients</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-book"></i>Method</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-    <li>
-      <div class="collapsible-header collapsible-border white-text blue-grey darken-4 "><i class="fas fa-camera"></i>Image</div>
-      <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-    </li>
-  </ul>
+
+<div class="row  background-add-recipe white-text">
+  <form class="col s12 m10 offset-m1 card-panel blue-grey darken-4 form-border" method="POST" action="{{ url_for('add_recipe')}}">
+      <!-- recipe name -->
+      <div class="row ">
+          <div class="input-field col s12">
+              <i class="fas fa-pencil-alt prefix"></i>
+              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate white-text" required>
+              <label for="recipe_name" class="white-text">Recipe Name</label>
+          </div>
+      </div>
+      <!-- recipe ingredients -->
+      <div class="row">
+          <div class="input-field col s12">
+              <i class="fas fa-utensils prefix"></i>
+              <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"  type="text" class="materialize-textarea validate white-text"></textarea>
+              <label for="recipe_ingredients" class ="white-text">Recipe ingredients</label>
+          </div>
+      </div>
+      <!-- recipe method -->
+      <div class="row">
+          <div class="input-field col s12">
+              <i class="fas fa-book prefix"></i>
+              <textarea id="recipe_method" name="recipe_method" minlength="5"  type="text" class="materialize-textarea validate white-text"></textarea>
+              <label for="recipe_method" class ="white-text">Recipe Method</label>
+          </div>
+      </div>
+      <!-- add recipe image -->
+      <div class="row">
+          <div class="input-field col s12">
+              <i class="fas fa-camera prefix"></i>
+              <input id="recipe_image" name="recipe_image" type="url" class="validate white-text">
+              <label for="recipe_image" class ="white-text">Recipe Image (please enter a url)</label>
+          </div>
+      </div>
+      <!-- submit button  -->
+      <div class="row">
+          <div class="col s12 center-align">
+              <button type="submit" class="btn-large darken-1 text-shadow add-recipes-button">
+                  Add Recipe<i class="fas fa-plus-square right"></i>
+              </button>
+          </div>
+      </div>
+  </form>
 </div>
 {% endblock %}
+<div class="background-add-recipe">
+  <ul class="collapsible">
+      <li>
+        <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-pencil-alt"></i>Recipe Name</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-utensils"></i>Ingredients</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header collapsible-border white-text blue-grey darken-4"><i class="fas fa-book"></i>Method</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+      <li>
+        <div class="collapsible-header collapsible-border white-text blue-grey darken-4 "><i class="fas fa-camera"></i>Image</div>
+        <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+      </li>
+    </ul>
+  </div>

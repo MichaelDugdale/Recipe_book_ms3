@@ -71,11 +71,6 @@ body {
 
 /* add recipe.html */
 
-.collapsible-border {
-  border: #c20404 2px solid;
-  padding-top: 1px;
-}
-
 .background-add-recipe {
   border-bottom: #c20404 4px solid;
   background-color: #263238;
@@ -86,3 +81,47 @@ body {
   background-size: cover;
   min-height: 81vh;
 }
+
+.form-border {
+  border:#c20404 4px solid;
+  
+}
+
+/* add recipe.html */
+
+.recipe-row {
+  padding: 10px;
+  border-radius: 0.5rem;
+}
+
+.recipe-card-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.recipe-body {
+  padding: 1.25rem 0.4rem;
+}
+
+.recipe-img {
+  max-height: 180px;
+  width: auto;
+  max-width: 100%;
+  border-radius: 0.5rem;
+} 
+
+.card-title {
+  margin-top: 10px;
+  margin-bottom: 0;
+  font-size: 1.5rem;
+}
+
+.recipe-card {
+  background-color: #263238;
+  border: #c20404 4px solid;
+  margin-right: 5px;
+}
+
+/* media queries */
+
+
