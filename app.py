@@ -22,15 +22,14 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
-    """
-    First page to load when user registers to site
-    """
+
+# First page to load when user registers to site
     return render_template("home.html")
 
 
 @app.route("/get_recipes")
 def get_recipes():
-    recipes = mongo.db.recipes.find()
+    recipes = list(mongo.db.recipes.find())
     return render_template("recipes.html", recipes=recipes)
 
 
@@ -101,6 +100,7 @@ def profile(username):
 
     return redirect(url_for("login"))
 
+# logout
 
 @app.route("/logout")
 def logout():
@@ -109,6 +109,7 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+# add recipe
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -129,12 +130,11 @@ def add_recipe():
         return redirect(url_for("login"))
     return render_template("add_recipe.html")
 
-
+#Full recipe
 @app.route("/full_recipes/<recipe_id>")
 def full_recipes(recipe_id):
-    """
-    gets full recipe from db to render on site
-    """
+
+    # gets full recipe from db to render on site
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     try:
         category_name = mongo.db.categories.find_one(
@@ -144,18 +144,24 @@ def full_recipes(recipe_id):
         recipe["category_id"] = "undefined"
     return render_template("full_recipes.html", recipe=recipe)
 
-
+# delete function
 @app.route("/delete_recipes/<recipe_id>")
 def delete_recipes(recipe_id):
-    """
-    deletes recipes from database
-    """
+
+    # deletes recipes from database
     if "user" in session:
         user = session["user"]
         recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
         mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
         flash("Recipe Successfully Deleted")
     return redirect(url_for("profile", username=session["user"]))
+
+# search function
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    recipe = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    return render_template("recipes.html", recipe=recipe)
 
 
 if __name__ == "__main__":
