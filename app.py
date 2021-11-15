@@ -93,9 +93,11 @@ def profile(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
+    my_recipes = list(mongo.db.recipes.find(
+                {"created_by": session["user"]}))
 
     if session["user"]:
-        return render_template("profile.html", username=username)
+        return render_template("profile.html", username=username, my_recipes=my_recipes)
 
     return redirect(url_for("login"))
 
@@ -126,6 +128,34 @@ def add_recipe():
         flash("Sorry, you are unable to do this, please log in")
         return redirect(url_for("login"))
     return render_template("add_recipe.html")
+
+
+@app.route("/full_recipes/<recipe_id>")
+def full_recipes(recipe_id):
+    """
+    gets full recipe from db to render on site
+    """
+    recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+    try:
+        category_name = mongo.db.categories.find_one(
+            {"_id": ObjectId(recipe["category_id"])})["category_name"]
+        recipe["category_id"] = category_name
+    except BaseException:
+        recipe["category_id"] = "undefined"
+    return render_template("full_recipes.html", recipe=recipe)
+
+
+@app.route("/delete_recipes/<recipe_id>")
+def delete_recipes(recipe_id):
+    """
+    deletes recipes from database
+    """
+    if "user" in session:
+        user = session["user"]
+        recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
+        mongo.db.recipes.remove({"_id": ObjectId(recipe_id)})
+        flash("Recipe Successfully Deleted")
+    return redirect(url_for("profile", username=session["user"]))
 
 
 if __name__ == "__main__":
