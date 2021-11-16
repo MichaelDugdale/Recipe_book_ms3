@@ -126,7 +126,7 @@ def add_recipe():
             mongo.db.recipes.insert_one(add_recipes)
             flash("Your Recipe Has Been Successfully Added!!")
     else:
-        flash("Sorry, you are unable to do this, please log in")
+        flash("Please log in to continue")
         return redirect(url_for("login"))
     return render_template("add_recipe.html")
 
@@ -134,7 +134,7 @@ def add_recipe():
 @app.route("/full_recipes/<recipe_id>")
 def full_recipes(recipe_id):
 
-    # gets full recipe from db to render on site
+    # renders the full recipe from mongodb onto the site
     recipe = mongo.db.recipes.find_one({"_id": ObjectId(recipe_id)})
     try:
         category_name = mongo.db.categories.find_one(
@@ -161,6 +161,7 @@ def delete_recipes(recipe_id):
 def search():
     query = request.form.get("query")
     recipe = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    flash("Here are your recipes!")
     return render_template("recipes.html", recipe=recipe)
 
 

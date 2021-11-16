@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="recipe-body center-align">
+    <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
+        <img src="{{recipe.recipe_image}}" class="recipe-img">
+    </a>
+    <h5 class="card-title text-shadow">{{recipe.recipe_name}}</h5>
+</div>
+<div class="row">
+    <div class="col s6 center-align">
+        <h4 class="recipe-ingredients">Ingredients</h4>
+        <ul>
+            {% for line in recipe.recipe_ingredients %}
+            <li class="ingredients-list">
+                {{ line[0]|upper}}{{line[1:] }}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="col s6">
+        <h4 class="recipe-steps">Steps</h4>
+        <ol>
+            {% for line in recipe.recipe_method %}
+            <li class="recipe-method">
+                {{ line[0]|upper}}{{line[1:] }}
+            </li>
+            {% endfor %}
+        </ol>
+    </div>
+</div>
+
+
+{% endblock %}

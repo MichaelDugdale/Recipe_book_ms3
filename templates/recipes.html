@@ -18,20 +18,23 @@
             </div>
         </form>
     </div>
-
+    {% if recipes|length > 0 %}
     <div class="col-12 card-group text-container text-center">
         <div class="row recipe-row">
             {% for recipe in recipes %}
-            <div class="col s12 m9 l4 recipe-card">
-                <div class="recipe-body center-align">
-                    <a href="#" class="recipe-img">
+            <div class="col s12 m9 l4 recipe-card center-align">
+                <div class="recipe-body">
+                    <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
                         <img src="{{recipe.recipe_image}}" class="recipe-img">
                     </a>
-                    <h5 class="card-title white-text text-shadow">{{recipe.recipe_name}}</h5>
+                    <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}">
+                        <h5 class="card-title text-shadow">{{recipe.recipe_name}}</h5>
+                    </a>
                 </div>
 
             </div>
             {% endfor %}
         </div>
     </div>
+    {% endif %}
     {% endblock%}
