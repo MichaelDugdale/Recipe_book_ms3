@@ -186,9 +186,9 @@ def delete_recipes(recipe_id):
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    recipe = list(mongo.db.recipes.find({"$text": {"$search": query}}))
+    recipes = list(mongo.db.recipes.find({"$text": {"$search": query}}))
     flash("Here are your recipes!")
-    return render_template("recipes.html", recipe=recipe)
+    return render_template("recipes.html", recipes=recipes)
 
 
 if __name__ == "__main__":
