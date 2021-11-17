@@ -2,12 +2,12 @@
 {% block content %}
 
 <div class="row  background-add-recipe white-text">
-  <form class="col s12 m10 offset-m1 card-panel blue-grey darken-4 form-border" method="POST" action="{{ url_for('add_recipe')}}">
+  <form class="col s12 m10 offset-m1 card-panel blue-grey darken-4 form-border" method="POST" action="{{ url_for('edit_recipe', recipe_id=recipe._id)}}">
       <!-- recipe name -->
       <div class="row ">
           <div class="input-field col s12">
               <i class="fas fa-pencil-alt prefix"></i>
-              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" type="text" class="validate white-text" required>
+              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value ="{{recipe.recipe_name}}"type="text" class="validate white-text" required>
               <label for="recipe_name" class="white-text">Recipe Name</label>
           </div>
       </div>
@@ -15,7 +15,7 @@
       <div class="row">
           <div class="input-field col s12">
               <i class="fas fa-utensils prefix"></i>
-              <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"  type="text" class="materialize-textarea validate white-text"></textarea>
+              <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"  type="text" class="materialize-textarea validate white-text">{{recipe.recipe_ingredients}}</textarea>
               <label for="recipe_ingredients" class ="white-text">Recipe ingredients</label>
           </div>
       </div>
@@ -23,7 +23,7 @@
       <div class="row">
           <div class="input-field col s12">
               <i class="fas fa-book prefix"></i>
-              <textarea id="recipe_method" name="recipe_method" minlength="5"  type="text" class="materialize-textarea validate white-text"></textarea>
+              <textarea id="recipe_method" name="recipe_method" minlength="5"  type="text" class="materialize-textarea validate white-text">"{{recipe.recipe_method}}"</textarea>
               <label for="recipe_method" class ="white-text">Recipe Method</label>
           </div>
       </div>
@@ -31,7 +31,7 @@
       <div class="row">
           <div class="input-field col s12">
               <i class="fas fa-camera prefix"></i>
-              <input id="recipe_image" name="recipe_image" type="url" class="validate white-text">
+              <input id="recipe_image" name="recipe_image" type="url" value="{{recipe.recipe_image}}"class="validate white-text">
               <label for="recipe_image" class ="white-text">Recipe Image (please enter a url)</label>
           </div>
       </div>
@@ -39,7 +39,7 @@
       <div class="row">
           <div class="col s12 center-align">
               <button type="submit" class="btn-large darken-1 text-shadow add-recipes-button">
-                  Add Recipe<i class="fas fa-plus-square right"></i>
+                  Edit Recipe<i class="fas fa-plus-square right"></i>
               </button>
           </div>
       </div>
