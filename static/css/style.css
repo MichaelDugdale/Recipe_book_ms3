@@ -1,5 +1,6 @@
 body {
   font-family: 'Raleway', sans-serif;
+  margin-bottom: 100px;
 }
 
 .text-shadow {
@@ -51,7 +52,14 @@ a {
 .footer-bg {
   background-color: #263238;
   border-bottom: #c20404 4px solid;
-  margin-top: -20px;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }
 
 
@@ -72,6 +80,26 @@ a {
   margin-top: 17.5px;
 }
 
+/* home.html */
+
+.home-bg {
+  border-bottom: #c20404 4px solid;
+  background-color: #263238;
+  background: url("../images/asian-food-background-various-cooking-ingredients-rustic-background-top-view-banner-concept-chinese-thai.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 81vh;
+}
+
+.home-header {
+  padding-bottom: 5rem;
+}
+
+.carousel {
+  padding-bottom: 5rem;
+}
 
 
 /* add recipe.html */
@@ -124,8 +152,30 @@ a {
 
 .recipe-card {
   background-color: #263238;
-  border: #c20404 4px solid;
+  border: #c20404 2px solid;
   margin-right: 5px;
 }
+
+.recipe-bg {
+  border-bottom: #c20404 4px solid;
+  background-color: #263238;
+  background: url("../images/asian-food-background-various-cooking-ingredients-rustic-background-top-view-banner-concept-chinese-thai.jpg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  min-height: 81vh;
+}
+
+
+/* 404.html */
+.border-404 {
+  color:white;
+  border: #c20404 2px solid;
+  background-color: #c20404;
+}
+
+/* profile.html */
+
 
 /* media queries */

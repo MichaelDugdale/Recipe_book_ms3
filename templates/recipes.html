@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<div>
+<div class="recipe-bg">
     <div class="col s12 m12 l3 row search-card-panel grey lighten-5">
         <form class="col s12 m12 l12" action="{{ url_for('search')}}" method="POST">
             <div class="row valign-wrapper center-align">
@@ -24,9 +24,15 @@
             {% for recipe in recipes %}
             <div class="col s12 m12 l4 offset-l1 recipe-card center-align">
                 <div class="recipe-body">
+                    {% if recipe.recipe_image %}
                     <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
                         <img src="{{recipe.recipe_image}}" class="recipe-img">
                     </a>
+                    {% else %}
+                    <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
+                        <img src="static/images/man-with-dough.jpg" class="recipe-img">
+                    </a>
+                    {% endif %}
                     <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}">
                         <h5 class="card-title text-shadow">{{recipe.recipe_name}}</h5>
                     </a>

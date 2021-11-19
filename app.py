@@ -89,6 +89,10 @@ def login():
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+    # Only users can access profile
+    if not session.get("user"):
+        return render_template("404.html")
+
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
@@ -173,7 +177,6 @@ def full_recipes(recipe_id):
 # delete function
 @app.route("/delete_recipes/<recipe_id>")
 def delete_recipes(recipe_id):
-
     # deletes recipes from database
     if "user" in session:
         user = session["user"]

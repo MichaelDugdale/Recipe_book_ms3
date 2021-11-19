@@ -7,7 +7,7 @@
       <div class="row ">
           <div class="input-field col s12">
               <i class="fas fa-pencil-alt prefix"></i>
-              <input id="recipe_name" name="recipe_name" minlength="5" maxlength="50" value ="{{recipe.recipe_name}}"type="text" class="validate white-text" required>
+              <input id="recipe_name" name="recipe_name"  minlength="5" maxlength="50" value ="{{recipe.recipe_name}}"type="text" class="validate white-text" required>
               <label for="recipe_name" class="white-text">Recipe Name</label>
           </div>
       </div>
@@ -15,7 +15,8 @@
       <div class="row">
           <div class="input-field col s12">
               <i class="fas fa-utensils prefix"></i>
-              <textarea id="recipe_ingredients" name="recipe_ingredients" minlength="5"  type="text" class="materialize-textarea validate white-text">{{recipe.recipe_ingredients}}</textarea>
+              <textarea id="recipe_ingredients" name="recipe_ingredients" pattern="[A-Za-z0-9]{1,20}" minlength="5"  type="text" class="materialize-textarea validate white-text">{% 
+                for line in recipe.recipe_ingredients %}{{ line }}&#10;{% endfor %}</textarea>
               <label for="recipe_ingredients" class ="white-text">Recipe ingredients</label>
           </div>
       </div>
@@ -23,7 +24,8 @@
       <div class="row">
           <div class="input-field col s12">
               <i class="fas fa-book prefix"></i>
-              <textarea id="recipe_method" name="recipe_method" minlength="5"  type="text" class="materialize-textarea validate white-text">{{recipe.recipe_method}}</textarea>
+              <textarea id="recipe_method" name="recipe_method" minlength="5" pattern="[A-Za-z0-9]{1,20}"  type="text" class="materialize-textarea validate white-text">{% 
+                for line in recipe.recipe_method %}{{ line }}&#10;{% endfor %}</textarea>
               <label for="recipe_method" class ="white-text">Recipe Method</label>
           </div>
       </div>
