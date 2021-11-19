@@ -18,11 +18,11 @@
             <div class="recipe-body center-align">
                 {% if recipe.recipe_image %}
                 <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
-                    <img src="{{recipe.recipe_image}}" class="recipe-img">
+                    <img src="{{recipe.recipe_image}}" alt="recipe-picture" class="recipe-img">
                 </a>
                 {% else %}
                 <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}" class="recipe-img">
-                    <img src="static/images/man-with-dough.jpg" class="recipe-img">
+                    <img src="static/images/man-with-dough.jpg" alt="man kneading dough" class="recipe-img">
                 </a>
                 {% endif %}
                 <a href="{{ url_for('full_recipes', recipe_id=recipe._id) }}">

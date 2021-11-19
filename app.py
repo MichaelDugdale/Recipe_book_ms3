@@ -23,7 +23,7 @@ mongo = PyMongo(app)
 @app.route("/home")
 def home():
 
-# First page to load when user registers to site
+    # First page to load when user registers to site
     return render_template("home.html")
 
 
@@ -100,11 +100,14 @@ def profile(username):
                 {"created_by": session["user"]}))
 
     if session["user"]:
-        return render_template("profile.html", username=username, my_recipes=my_recipes)
+        return render_template("profile.html", username=username,
+                               my_recipes=my_recipes)
 
     return redirect(url_for("login"))
 
+
 # logout
+
 
 @app.route("/logout")
 def logout():
@@ -113,7 +116,9 @@ def logout():
     session.pop("user")
     return redirect(url_for("login"))
 
+
 # add recipe
+
 
 @app.route("/add_recipe", methods=["GET", "POST"])
 def add_recipe():
@@ -122,8 +127,10 @@ def add_recipe():
         if request.method == "POST":
             add_recipes = {
                 "recipe_name": request.form.get("recipe_name"),
-                "recipe_ingredients": request.form.get("recipe_ingredients").splitlines(),
-                "recipe_method": request.form.get("recipe_method").splitlines(),
+                "recipe_ingredients": request.form.get
+                ("recipe_ingredients").splitlines(),
+                "recipe_method": request.form.get
+                ("recipe_method").splitlines(),
                 "recipe_image": request.form.get("recipe_image"),
                 "created_by": session["user"]
             }
@@ -140,7 +147,7 @@ def add_recipe():
 @app.route("/edit_recipe/<recipe_id>", methods=["GET", "POST"])
 def edit_recipe(recipe_id):
 
-   # edits user recipes into DB.
+    # edits user recipes into DB.
 
     if "user" in session:
         user = session["user"]
@@ -150,17 +157,21 @@ def edit_recipe(recipe_id):
                 if request.method == "POST":
                     change_recipes = {
                         "recipe_name": request.form.get("recipe_name"),
-                "recipe_ingredients": request.form.get("recipe_ingredients").splitlines(),
-                "recipe_method": request.form.get("recipe_method").splitlines(),
-                "recipe_image": request.form.get("recipe_image"),
-                "created_by": session["user"]
+                        "recipe_ingredients": request.form.get
+                        ("recipe_ingredients").splitlines(),
+                        "recipe_method": request.form.get
+                        ("recipe_method").splitlines(),
+                        "recipe_image": request.form.get("recipe_image"),
+                        "created_by": session["user"]
                     }
                     mongo.db.recipes.update(
                         {"_id": ObjectId(recipe_id)}, change_recipes)
                     flash("Recipe Successfully updated")
     return render_template("edit_recipe.html", recipe=recipe)
 
-#Full recipe
+# Full recipe
+
+
 @app.route("/full_recipes/<recipe_id>")
 def full_recipes(recipe_id):
 
@@ -175,6 +186,8 @@ def full_recipes(recipe_id):
     return render_template("full_recipes.html", recipe=recipe)
 
 # delete function
+
+
 @app.route("/delete_recipes/<recipe_id>")
 def delete_recipes(recipe_id):
     # deletes recipes from database
@@ -186,6 +199,8 @@ def delete_recipes(recipe_id):
     return redirect(url_for("profile", username=session["user"]))
 
 # search function
+
+
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -197,4 +212,4 @@ def search():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)
