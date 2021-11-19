@@ -32,11 +32,11 @@
                     class="waves-effect waves-light btn-small profile-btn">Edit Recipe</a>
                     
                 <!-- Modal Trigger -->
-                <a href="#modal1" class="waves-effect waves-light btn-small modal-trigger profile-btn">Delete Recipe</a>
+                <a href="#modal1{{ loop.index }}" class="waves-effect waves-light btn-small modal-trigger profile-btn">Delete Recipe</a>
             </div>
 
             <!-- Modal Structure -->
-            <div id="modal1" class="modal">
+            <div id="modal1{{ loop.index }}" class="modal">
                 <div class="modal-content">
                     <h4>Are you sure you want to delete this recipe?</h4>
                 </div>
